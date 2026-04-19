@@ -13,25 +13,23 @@ def next_magic_num(num):
     half = string[:(length + 1) // 2]
     mirrored = int(half + half[:length // 2][::-1])
 
-    if mirrored > num:
-        return mirrored
+    if mirrored > num: return mirrored
 
     half_inc = str(int(half) + 1)
 
-    if len(half_inc) > len(half):
-        return int("1" + "0" * length + "1")
-
+    if len(half_inc) > len(half): return int("1" + "0" * length + "1")
+    
     return int(half_inc + half_inc[:length // 2][::-1])
 
 
-def main():
+def main(): 
     data = Path("input.txt").read_text(encoding="utf-8")
 
     for line in data.splitlines():
         line = line.strip()
         number = eval(line.replace("^", "**"))
 
-        print(next_magic_num(number))
+        print(f"next_magic_num({number}) => {next_magic_num(number)}")
 
 
 if __name__ == "__main__":
